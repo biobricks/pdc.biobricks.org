@@ -38,11 +38,7 @@ var nav = require('./partials/nav')
 
 var legalTool = latest(require('pdc-legal-tool'))
 
-var JOURNALS = require('pct-minimum-documentation')
-  .map(function (element) {
-    return element.B
-  })
-  .sort()
+var JOURNALS = require('synthetic-biology-journals').sort()
 
 var CATEGORY_ORDER = [
   'composition of matter', 'process', 'machine', 'manufacture'
