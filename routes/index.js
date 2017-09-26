@@ -20,7 +20,7 @@ var routes = module.exports = require('http-hash')()
 
 routes.set('/', require('./homepage'))
 
-serveAllFiles(routes, 'svg')
+serveAllFiles(routes, 'png')
 serveAllFiles(routes, 'css')
 
 routes.set('/publish', require('./publish'))
