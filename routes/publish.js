@@ -542,8 +542,10 @@ function template (configuration, data) {
               <a href=https://en.wikipedia.org/wiki/Oxidoreductase>oxidoreductases</a>.
             </p>
 
-            <p>Search for patent classifications:</p>
-            <ul class=inputs id=ipcs></ul>
+            <div id=ipcSearch>
+              <p>Search for patent classifications:</p>
+              <ul class=inputs id=ipcs></ul>
+            </div>
           </section>
 
           <section id=links>
