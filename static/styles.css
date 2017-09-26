@@ -6,7 +6,6 @@ html, body {
 }
 
 body {
-  font-family: "Open Sans", Arial, sans-serif;
   font-family: sans-serif;
   font-weight: 500;
   line-height: 1.7em;
@@ -59,10 +58,11 @@ footer[role=contentinfo] section p {
 }
 
 nav {
+  padding: 1rem 0;
   margin: 0 auto;
   text-align: center;
-  vertical-align: top;
   width: 100%;
+  background: url(/poly-bionet.png);
 }
 
 nav ul {
@@ -76,7 +76,7 @@ nav ul li {
 }
 
 nav ul li {
-  margin-left: 1rem;
+  margin-left: 1.5rem;
 }
 
 nav ul li:first-of-type {
@@ -84,7 +84,7 @@ nav ul li:first-of-type {
 }
 
 nav a {
-  color: #777;
+  color: white;
   text-transform: uppercase;
 }
 
@@ -109,7 +109,7 @@ header, nav {
 }
 
 header {
-  padding: 0.5rem 0;
+  padding: 1rem 0;
   text-align: center;
   width: 100%;
 }
