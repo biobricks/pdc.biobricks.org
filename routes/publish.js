@@ -277,8 +277,10 @@ function template (configuration, data) {
 
     <main>
       <p>
-        Use this form to contribute scientific work to the public domain
-        by publishing to the
+        Use this form to contribute scientific work in synthetic biology
+        to the public domain
+        by publishing it to the Public Domain Chronicle.  For more about
+        PDC, see
         <a
             href=https://publicdomainchronicle.org
             target=_blank
