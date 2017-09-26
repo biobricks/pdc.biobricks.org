@@ -620,8 +620,10 @@ function template (configuration, data) {
               difficult to find relevant ones from scratch.
             </p>
 
-            <p>Search for patent classifications:</p>
-            <ul class=inputs id=ipcs></ul>
+            <div id=ipcSearch>
+              <p>Search for patent classifications:</p>
+              <ul class=inputs id=ipcs></ul>
+            </div>
           </section>
 
           <section id=links class=optional>
