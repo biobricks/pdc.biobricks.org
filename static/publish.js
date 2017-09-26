@@ -101,35 +101,13 @@ var checkedIPCs = []
 
 function configurePatentSearch () {
   var list = document.getElementById('ipcs')
-  var searchBox = document.getElementById('ipcSearchBox')
-  var button = document.getElementById('ipcSearchButton')
-  var request
-  searchBox.addEventListener('keypress', function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault()
-      event.stopPropagation()
-      searchIPCSs()
-    }
-  })
-  button.addEventListener('click', function (event) {
-    event.preventDefault()
-    event.stopPropagation()
-    searchIPCSs()
-  })
+  searchIPCSs()
+
   function searchIPCSs () {
-    var search = searchBox.value
-    button.disabled = true
-    var buttonText = button.innerHTML
-    button.innerHTML = 'Loading...'
-    if (search) {
-      if (request) {
-        request.abort()
-      }
-      request = new window.XMLHttpRequest()
+    if (true) {
+      var request = new window.XMLHttpRequest()
       request.overrideMimeType('text/plain')
       request.addEventListener('load', function () {
-        button.disabled = false
-        button.innerHTML = buttonText
         var body = this.responseText
         window.requestAnimationFrame(function () {
           var tree = JSON.parse(body)
@@ -182,14 +160,10 @@ function configurePatentSearch () {
                       var thisIPC = this.value
                       if (this.checked) {
                         checkedIPCs.push(thisIPC)
-                        button.disabled = true
-                        searchBox.disabled = true
                       } else {
                         var index = checkedIPCs.indexOf(thisIPC)
                         checkedIPCs.splice(index, 1)
                         if (checkedIPCs.length === 0) {
-                          button.disabled = false
-                          searchBox.disabled = false
                         }
                       }
                     })
@@ -206,9 +180,7 @@ function configurePatentSearch () {
           })
         })
       })
-      request.open(
-        'GET', 'ipc?search=' + encodeURIComponent(searchBox.value)
-      )
+      request.open('GET', 'ipc')
       request.send()
     }
 

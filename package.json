@@ -39,6 +39,7 @@
     "sodium-native": "^2.4.2",
     "split2": "^3.1.1",
     "straighten-quotes": "^0.1.0",
+    "synthetic-biology-ipcs": "^1.0.1",
     "synthetic-biology-journals": "^1.0.0",
     "through2": "^3.0.1",
     "touch": "^3.1.0",
