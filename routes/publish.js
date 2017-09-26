@@ -399,7 +399,7 @@ function template (configuration, data) {
           <p>
             Provide a title for your submission, describing what you've
             found and how it is useful, in the terms most natural for
-            you and colleagues in your field.
+            you and fellow synthetic biologists.
           </p>
 
           <input name=title type=text maxlength=256 spellcheck required>
@@ -409,15 +409,14 @@ function template (configuration, data) {
           <h2>Finding</h2>
 
           <p>
-            Describe what you&rsquo;ve found. Feel free to put it just
-            as you would to a colleague in your field, to make clear to
-            them what&rsquo;s new, and how it&rsquo;s useful.
-            Feel free to use multiple paragraphs if necessary.
+            Describe what you&rsquo;ve found, and explain the best way
+            that other synthetic biologists can use it themselves.  Feel free
+            to use multiple paragraphs if necessary.
           </p>
 
           <aside class=legal>
             This is the most important part.  If your description
-            enables others in your field to make and use what you've
+            enables other synthetic biologists to make and use what you've
             found, publishing it helps secure it for the public domain.
             If at all possible, have a colleague review your description
             and tell you if it&rsquo;s missing anything that isn&rsquo;t
@@ -526,8 +525,7 @@ function template (configuration, data) {
             <p>
               Which journals do others interested in the area of your
               contribution publish in and read?  Tick the boxes next to
-              the journals most relevant to the field of your contribution.
-              Usually, two or three journals are enough.
+              the journals most relevant to your contribution.
             </p>
 
             <ul class=listOfCheckBoxes>
@@ -579,7 +577,6 @@ function template (configuration, data) {
               Which American Association for the Advancement of
               Science affiliate organizations are most relevant
               to the field of your contribution?
-              Usually, one or two are enough.
             </p>
 
             <ul class=listOfCheckBoxes>
