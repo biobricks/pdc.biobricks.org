@@ -31,9 +31,15 @@ module.exports = function (request, response, configuration) {
     ${header()}
     ${nav()}
     <main>
-      <h1>Public Domain Chronicle (PDC)</h1>
-      <p class=lead>
-        Public Domain Chronicle is a fast, easy, and free way to secure scientific methods and findings for the public domain.
+      <h1>The BioBricks Foundation PDC</h1>
+      <p>
+        <a href=https://pdc.biobricks.org>pdc.biobricks.org</a>
+        is a member of the
+        <a href=https://publicdomainchronicle.org/network>Public Domain Chronicle network</a>
+        hosted by the
+        <a href=https://biobricks.org>BioBricks Foundation</a>.
+        Together, BioBricks and PDC make it fast, easy, and free to secure
+        methods and findings in synthetic biology for the public domain.
       </p>
     </main>
     </div>
