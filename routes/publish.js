@@ -36,11 +36,7 @@ var nav = require('./partials/nav')
 
 var grant = latest(require('public-science-grant'))
 
-var JOURNALS = require('pct-minimum-documentation')
-  .map(function (element) {
-    return element.B
-  })
-  .sort()
+var JOURNALS = require('synthetic-biology-journals').sort()
 
 var CATEGORIES = require('us-patent-categories')
 
