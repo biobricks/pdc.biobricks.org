@@ -40,8 +40,6 @@ var JOURNALS = require('synthetic-biology-journals').sort()
 
 var CATEGORIES = require('us-patent-categories')
 
-var AAAS_AFFILIATES = require('aaas-affiliates')
-
 var TOPICS = []
 Object.keys(GRC_TOPICS).forEach(function (year) {
   GRC_TOPICS[year].forEach(function (topic) {
@@ -58,7 +56,6 @@ function get (request, response, configuration, errors) {
   response.end(
     template(configuration, {
       journals: JOURNALS,
-      aaas: AAAS_AFFILIATES,
       subjects: SUBJECTS,
       grc: TOPICS,
       RECAPTCHA_PUBLIC: configuration.recaptcha.public,
@@ -216,8 +213,7 @@ var ARRAYS = [
   'journals',
   'naturesubjects',
   'classifications',
-  'gordonresearchconferences',
-  'aaasaffiliates'
+  'gordonresearchconferences'
 ]
 
 var NORMALIZE_LINES = ['finding', 'safety']
@@ -498,33 +494,6 @@ function template (configuration, data) {
                         type=checkbox
                         value="${escape(subject.toLowerCase())}">
                     ${escape(subject)}
-                  </label>
-                </li>
-                `
-              })}
-            </ul>
-          </section>
-
-          <section id=aaasaffiliates>
-            <h2>AAAS Affiliates</h2>
-
-            <p>
-              Which American Association for the Advancement of
-              Science affiliate organizations are most relevant
-              to the field of your contribution?
-            </p>
-
-            <!-- TODO: filter search box for lists of checkboxes -->
-            <ul class=listOfCheckBoxes>
-              ${data.aaas.map(function (affiliate) {
-                return html`
-                <li>
-                  <label>
-                    <input
-                        name=aaasaffiliates[]
-                        type=checkbox
-                        value="${escape(affiliate)}">
-                    ${escape(affiliate)}
                   </label>
                 </li>
                 `

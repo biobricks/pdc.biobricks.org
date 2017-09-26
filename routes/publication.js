@@ -208,16 +208,6 @@ module.exports = function (request, response, configuration) {
       }
       </ul>
 
-      <ul id=aaasaffiliates>
-      ${
-        data.metadata &&
-        data.metadata.aaasaffiliates &&
-        data.metadata.aaasaffiliates.map(function (affiliate) {
-          return html`<li>AAAS Affiliate: ${escape(affiliate)}</li>`
-        })
-      }
-      </ul>
-
       <ul id=gordonresearchconferences>
       ${
         data.metadata &&
