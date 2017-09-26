@@ -13,29 +13,13 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
  */
-var http = require('http')
-var pump = require('pump')
 var methodNotAllowed = require('./method-not-allowed')
+var tree = require('synthetic-biology-ipcs')
 
 module.exports = function (request, response, configuration) {
   if (request.method === 'GET') {
-    var search = request.query.search
-    if (search) {
-      http.get({
-        host: 'ipc.kemitchell.com',
-        path: (
-          '/classifications' +
-          '?search=' + encodeURIComponent(search) +
-          '&limit=10'
-        )
-      }, function (apiResponse) {
-        response.setHeader('Content-Type', 'application/json')
-        pump(apiResponse, response)
-      })
-    } else {
-      response.statusCode = 400
-      response.end()
-    }
+    response.setHeader('Content-Type', 'application/json')
+    response.end(JSON.stringify(tree))
   } else {
     methodNotAllowed(response)
   }
