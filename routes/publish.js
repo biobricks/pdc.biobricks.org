@@ -16,7 +16,6 @@ limitations under the License.
 
 var Busboy = require('busboy')
 var FormData = require('form-data')
-var GRC_TOPICS = require('gordon-research-conference-topics')
 var NETWORK = require('pdc-network')
 var concat = require('concat-stream')
 var displayParagraphs = require('./display-paragraphs')
@@ -48,13 +47,6 @@ var CATEGORIES = require('us-patent-categories')
     return CATEGORY_ORDER.indexOf(a.term) - CATEGORY_ORDER.indexOf(b.term)
   })
 
-var TOPICS = []
-Object.keys(GRC_TOPICS).forEach(function (year) {
-  GRC_TOPICS[year].forEach(function (topic) {
-    if (!TOPICS.includes(topic)) TOPICS.push(topic)
-  })
-})
-
 var SUBJECTS = require('nature-subjects').sort(function (a, b) {
   return a.toLowerCase().localeCompare(b.toLowerCase())
 })
@@ -65,7 +57,6 @@ function get (request, response, configuration, errors) {
     template(configuration, {
       journals: JOURNALS,
       subjects: SUBJECTS,
-      grc: TOPICS,
       RECAPTCHA_PUBLIC: configuration.recaptcha.public,
       errors: errors
     })
@@ -232,8 +223,7 @@ var ARRAYS = [
   'ussubjectmatter',
   'journals',
   'naturesubjects',
-  'classifications',
-  'gordonresearchconferences'
+  'classifications'
 ]
 
 var NORMALIZE_LINES = ['finding', 'safety']
@@ -571,33 +561,7 @@ function template (configuration, data) {
             </ul>
           </section>
 
-          <section id=gordonresearchconferences class=recommended>
-            <h2>Gordon Research Conferences</h2>
-
-            <p>
-              Which Gordon Research Conferences topics
-              are most relevant to the field of your contribution?
-              Usually, two or three are enough.
-            </p>
-
-            <ul class=listOfCheckBoxes>
-              ${data.grc.map(function (topic) {
-    return html`
-                <li>
-                  <label>
-                    <input
-                        name=gordonresearchconferences[]
-                        type=checkbox
-                        value="${escape(topic)}">
-                    ${escape(topic)}
-                  </label>
-                </li>
-                `
-  })}
-            </ul>
-          </section>
-
-          <section id=classifications class=optional>
+          <section id=classifications>
             <h2>Patent Classifications</h2>
 
             <p>
