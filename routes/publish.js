@@ -585,6 +585,31 @@ function template (configuration, data) {
             </ul>
           </section>
 
+          <section id=naturesubjects class=recommended>
+            <h2>Subject Keywords</h2>
+
+            <p>
+              Which of the following subject keywords describe the area of your
+              contribution? Usually, three or four are enough.
+            </p>
+
+            <ul class=listOfCheckBoxes>
+              ${data.subjects.map(function (subject) {
+                return html`
+                <li>
+                  <label>
+                    <input
+                        name=naturesubjects[]
+                        type=checkbox
+                        value="${escape(subject.toLowerCase())}">
+                    ${escape(subject)}
+                  </label>
+                </li>
+                `
+  })}
+            </ul>
+          </section>
+
           <section id=journals class=recommended>
             <h2>Journals</h2>
 
@@ -598,7 +623,7 @@ function template (configuration, data) {
 
             <ul class=listOfCheckBoxes>
               ${data.journals.map(function (journal) {
-    return html`
+                return html`
                 <li>
                   <label>
                     <input
@@ -607,31 +632,6 @@ function template (configuration, data) {
                         value="${escape(journal)}"
                         ${PRECHECKED_JOURNALS.includes(journal) && 'checked'}>
                     ${escape(journal)}
-                  </label>
-                </li>
-                `
-  })}
-            </ul>
-          </section>
-
-          <section id=naturesubjects class=recommended>
-            <h2>Subject Keywords</h2>
-
-            <p>
-              Which of the following subject keywords describe the area of your
-              contribution? Usually, three or four are enough.
-            </p>
-
-            <ul class=listOfCheckBoxes>
-              ${data.subjects.map(function (subject) {
-    return html`
-                <li>
-                  <label>
-                    <input
-                        name=naturesubjects[]
-                        type=checkbox
-                        value="${escape(subject.toLowerCase())}">
-                    ${escape(subject)}
                   </label>
                 </li>
                 `
