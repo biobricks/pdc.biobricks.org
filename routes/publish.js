@@ -36,6 +36,13 @@ var nav = require('./partials/nav')
 var grant = latest(require('public-science-grant'))
 
 var JOURNALS = require('synthetic-biology-journals').sort()
+var PRECHECKED_JOURNALS = [
+  'ACS Synthetic Biology',
+  'IET Synthetic Biology',
+  'International Journal of Systems and Synthetic Biology',
+  'Journal of Synthetic Biology',
+  'Systems and Synthetic Biology'
+]
 
 var CATEGORY_ORDER = [
   'composition of matter', 'process', 'machine', 'manufacture'
@@ -521,6 +528,8 @@ function template (configuration, data) {
               Which journals do others interested in the area of your
               contribution publish in and read?  Tick the boxes next to
               the journals most relevant to your contribution.
+              A few general-area synthetic biology journals have been
+              checked for you.
             </p>
 
             <ul class=listOfCheckBoxes>
@@ -531,7 +540,8 @@ function template (configuration, data) {
                     <input
                         name=journals[]
                         type=checkbox
-                        value="${escape(journal)}">
+                        value="${escape(journal)}"
+                        ${PRECHECKED_JOURNALS.includes(journal) && 'checked'}>
                     ${escape(journal)}
                   </label>
                 </li>
