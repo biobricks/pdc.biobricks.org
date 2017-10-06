@@ -349,9 +349,9 @@ function template (configuration, data) {
           <h2>Safety Notes</h2>
 
           <p>
-            Optionally describe any special safety precautions others
-            might like to take when trying and using your contribution,
-            to protect themselves, other people, and the environment.
+            Describe any safety precaution that you are taking,
+            as well as precautions others might like to take when
+            trying and using your finding or the materials involved.
           </p>
 
           <aside class=legal>
