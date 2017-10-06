@@ -373,7 +373,7 @@ function template (configuration, data) {
 
           <textarea
               name=finding
-              rows=30
+              rows=15
               maxlength=28000
               spellcheck
               required></textarea>
