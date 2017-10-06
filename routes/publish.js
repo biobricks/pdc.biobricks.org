@@ -43,6 +43,26 @@ var SUBJECTS = require('nature-subjects').sort(function (a, b) {
   return a.toLowerCase().localeCompare(b.toLowerCase())
 })
 
+var SEQUENCE_ACCEPT = []
+  .concat([
+    '.fasta',
+    '.fna',
+    '.ffn',
+    '.faa',
+    '.frn',
+    'chemical/fasta',
+    'chemical/seq-aa-fasta',
+    'chemical/seq-na-fasta'
+  ])
+  .concat([
+    '.gb',
+    '.gbk',
+    '.genbank',
+    'chemical/genbank',
+    'chemical/seq-na-genbank'
+  ])
+  .join(',')
+
 function get (request, response, configuration, errors) {
   response.setHeader('Content-Type', 'text/html; charset=UTF-8')
   response.end(
@@ -365,20 +385,49 @@ function template (configuration, data) {
           <textarea name=safety rows=5 spellcheck></textarea>
         </section>
 
-        <section id=attachments class=optional>
-          <h1>Attachments</h1>
-
+        <section id=sequences class=optional>
+          <h1>Sequences</h1>
           <p>
-            If sequence or other data files help describe your
-            finding or how to use it, attach them here.
-            Standard-format files, like
+            Attach gene sequence files relevant to your finding.
+            <a
+                href=https://www.ncbi.nlm.nih.gov/genbank/
+                target=_blank
+              >GenBank</a>
+            files are preferred.
             <a
                 href=http://zhanglab.ccmb.med.umich.edu/FASTA/
-                target=_blank>FASTA</a>
-            and
-            <a href=http://sbolstandard.org/ target=_blank>SBOL</a>
-            files are especially important.  Please
-            <em>don&rsquo;t</em> attach a preprint PDF or article.
+                target=_blank
+              >FASTA</a>
+            files are also accepted.
+          </p>
+          <p>
+            Please e-mail
+            <a
+                href=mailto:kyle@kemitchell.com
+                target=_blank
+              >Kyle Mitchell</a>
+            if you have many sequences to contribute in bulk.
+          </p>
+          <ul class=inputs>
+            ${html`
+              <li>
+                <input
+                    name=attachments[]
+                    type=file
+                    accept="${escape(SEQUENCE_ACCEPT)}"
+                >
+              </li>
+            `.repeat(3)}
+          </ul>
+        </section>
+
+        <section id=attachments class=optional>
+          <h1>Other Files</h1>
+
+          <p>
+            If other data files help describe your
+            finding or how to use it, attach them here.
+            Please <em>don&rsquo;t</em> attach a preprint PDF or article.
             Those best belong on a preprint server, like
             <a href=http://biorxiv.org target=_blank>bioR&chi;iv</a>,
             under a <a href=https://creativecommons.org>Creative Commons</a>
