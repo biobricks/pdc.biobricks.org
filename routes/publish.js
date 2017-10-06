@@ -575,7 +575,7 @@ function template (configuration, data) {
             </ul>
           </section>
 
-          <section id=classifications>
+          <section id=classifications class=optional>
             <h2>Patent Classifications</h2>
 
             <p>
@@ -590,10 +590,22 @@ function template (configuration, data) {
               <a href=https://en.wikipedia.org/wiki/Oxidoreductase>oxidoreductases</a>.
             </p>
 
-            <div id=ipcSearch>
-              <p>Search for patent classifications:</p>
-              <ul class=inputs id=ipcs></ul>
-            </div>
+            <p>
+              If you&rsquo;re familiar with IPCs from prior patents,
+              please identify them below.  Otherwise, feel free to skip
+              this section.
+            </p>
+
+            <ul class=inputs>
+              ${html`
+                <li>
+                  <input
+                      name=ipcs[]
+                      type=text
+                      placeholder="IPC Code">
+                </li>
+              `.repeat(3)}
+            </ul>
           </section>
 
           <section id=links>

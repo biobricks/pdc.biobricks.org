@@ -42,6 +42,4 @@ routes.set(
   require('./attachment')
 )
 
-routes.set('/ipc', require('./ipc'))
-
 routes.set('/grant', require('./grant'))

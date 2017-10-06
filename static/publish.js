@@ -18,11 +18,11 @@ document.addEventListener('DOMContentLoaded', function () {
   addAnotherInputButton('links', 'Publication', 25)
   addAnotherInputButton('attachments', 'Attachment', 5)
   addAnotherInputButton('sequences', 'Sequence File', 5)
+  addAnotherInputButton('classifications', 'IPC', 5)
   addSubmitSafety()
   addWordCount('finding')
   addWordCount('safety')
   showFileWarniings()
-  configurePatentSearch()
   addListFilterBoxes()
   addBSL3Button()
 })
@@ -97,142 +97,6 @@ function addWordCount (sectionID) {
 
 function countWords (textarea) {
   return textarea.value.split(/\w+\s*/g).length - 1
-}
-
-var checkedIPCs = []
-
-function configurePatentSearch () {
-  var list = document.getElementById('ipcs')
-  searchIPCSs()
-
-  function searchIPCSs () {
-    if (true) {
-      var request = new window.XMLHttpRequest()
-      request.overrideMimeType('text/plain')
-      request.addEventListener('load', function () {
-        var body = this.responseText
-        window.requestAnimationFrame(function () {
-          var tree = JSON.parse(body)
-          sortedKeys(tree, function (sectionCode) {
-            var section = tree[sectionCode]
-            var sectionElement = document.createElement('section')
-            sectionElement.appendChild(
-              descriptionElement(section.description, 'h3')
-            )
-            list.appendChild(sectionElement)
-
-            sortedKeys(section.children, function (classCode) {
-              var _class = section.children[classCode]
-              var classElement = collapsable(_class.description)
-              sectionElement.appendChild(classElement)
-
-              sortedKeys(_class.children, function (subclassCode) {
-                var subclass = _class.children[subclassCode]
-                var subclassElement = collapsable(subclass.description)
-                classElement.appendChild(subclassElement)
-
-                sortedKeys(subclass.children, function (groupCode) {
-                  var group = subclass.children[groupCode]
-                  var groupElement = document.createElement('section')
-                  var p = document.createElement('p')
-                  groupElement.appendChild(p)
-                  subclassElement.appendChild(groupElement)
-
-                  sortedKeys(group.children, function (subgroupCode) {
-                    var subgroup = group.children[subgroupCode]
-                    var ipc = (
-                      sectionCode + classCode + subclassCode +
-                      ' ' +
-                      groupCode + '/' + subgroupCode
-                    )
-                    var description = subgroup.length === 0
-                      ? '(same as above)'
-                      : subgroup
-                          .map(function (element) {
-                            return element.join(', ')
-                          })
-                          .join(' … ')
-                    var li = document.createElement('li')
-                    var label = document.createElement('label')
-                    var input = document.createElement('input')
-                    input.setAttribute('type', 'checkbox')
-                    input.setAttribute('value', ipc)
-                    input.setAttribute('name', 'classifications[]')
-                    input.addEventListener('change', function () {
-                      var thisIPC = this.value
-                      if (this.checked) {
-                        checkedIPCs.push(thisIPC)
-                      } else {
-                        var index = checkedIPCs.indexOf(thisIPC)
-                        checkedIPCs.splice(index, 1)
-                        if (checkedIPCs.length === 0) {
-                        }
-                      }
-                    })
-                    label.appendChild(input)
-                    label.appendChild(
-                      document.createTextNode(ipc + ': ' + description)
-                    )
-                    groupElement.appendChild(li)
-                    li.appendChild(label)
-                  })
-                })
-              })
-            })
-          })
-        })
-      })
-      request.open('GET', 'ipc')
-      request.send()
-    }
-
-    function sortedKeys (object, each) {
-      return Object.keys(object)
-        .sort()
-        .forEach(each)
-    }
-
-    function descriptionElement (description, type) {
-      var p = document.createElement(type || 'p')
-      description.forEach(function (component, index) {
-        if (index !== 0) {
-          p.appendChild(document.createElement('br'))
-        }
-        p.appendChild(
-          document.createTextNode(
-            Array.isArray(component)
-              ? component
-                .map(function (element) {
-                  return element.toLowerCase()
-                })
-                .join(', ')
-              : component.toLowerCase()
-          )
-        )
-      })
-      return p
-    }
-
-    function collapsable (description, startsOpen) {
-      var returned = document.createElement('section')
-      returned.className = startsOpen ? '' : 'collapsed'
-      var toggle = document.createElement('button')
-      toggle.className = 'toggle'
-      toggle.addEventListener('click', function (event) {
-        event.stopPropagation()
-        event.preventDefault()
-        if (returned.className === 'collapsed') {
-          returned.className = ''
-        } else {
-          returned.className = 'collapsed'
-        }
-      })
-      returned.appendChild(toggle)
-      var p = descriptionElement(description)
-      returned.appendChild(p)
-      return returned
-    }
-  }
 }
 
 var DOCUMENT_TYPES = [
