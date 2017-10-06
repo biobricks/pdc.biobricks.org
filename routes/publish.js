@@ -37,7 +37,13 @@ var grant = latest(require('public-science-grant'))
 
 var JOURNALS = require('synthetic-biology-journals').sort()
 
+var CATEGORY_ORDER = [
+  'composition of matter', 'process', 'machine', 'manufacture'
+]
 var CATEGORIES = require('us-patent-categories')
+  .sort(function (a, b) {
+    return CATEGORY_ORDER.indexOf(a.term) - CATEGORY_ORDER.indexOf(b.term)
+  })
 
 var SUBJECTS = require('nature-subjects').sort(function (a, b) {
   return a.toLowerCase().localeCompare(b.toLowerCase())
