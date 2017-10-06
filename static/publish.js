@@ -255,7 +255,7 @@ function addListFilterBoxes () {
     var filter = document.createElement('input')
     filter.type = 'search'
     filter.placeholder = 'Type here to filter the list below.'
-    filter.addEventListener('input', function (event) {
+    filter.addEventListener('input', debounce(function (event) {
       var target = event.target
       var searchString = target.value.toLowerCase().trim()
       var children = target.nextSibling.children
@@ -273,7 +273,7 @@ function addListFilterBoxes () {
           li.className = 'hidden'
         }
       }
-    })
+    }))
     list.parentNode.insertBefore(filter, list)
   }
 }
@@ -303,4 +303,44 @@ function addBSL3Button () {
     }
   })
   section.insertBefore(p, textarea)
+}
+
+function debounce (func, wait, immediate) {
+  var timeout
+  var args
+  var context
+  var time
+  var result
+
+  if (!wait) wait = 100
+
+  function later () {
+    var last = Date.now() - time
+
+    if (last < wait && last >= 0) {
+      timeout = setTimeout(later, wait - last)
+    } else {
+      timeout = null
+      if (!immediate) {
+        result = func.apply(context, args)
+        context = args = null
+      }
+    }
+  }
+
+  var debounced = function () {
+    context = this
+    args = arguments
+    time = Date.now()
+    var callNow = immediate && !timeout
+    if (!timeout) timeout = setTimeout(later, wait)
+    if (callNow) {
+      result = func.apply(context, args)
+      context = null
+      args = null
+    }
+    return result
+  }
+
+  return debounced
 }
