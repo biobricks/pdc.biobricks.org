@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
   showFileWarniings()
   configurePatentSearch()
   addListFilterBoxes()
+  addBSL3Button()
 })
 
 // Add a button at the end of a <section> to add another
@@ -410,4 +411,31 @@ function addListFilterBoxes () {
     })
     list.parentNode.insertBefore(filter, list)
   }
+}
+
+var BSL3_TEXT = (
+  'Confine work with the materials described to Biosafety Level 3 facilities.'
+)
+
+function addBSL3Button () {
+  var section = document.getElementById('safety')
+  var textarea = section.querySelector('textarea')
+  var p = document.createElement('p')
+  var button = document.createElement('button')
+  p.appendChild(button)
+  button.appendChild(
+    document.createTextNode('Add prewritten text for Biosafety Level 3')
+  )
+  button.addEventListener('click', function (event) {
+    event.preventDefault()
+    event.stopPropagation()
+    var currentValue = textarea.value
+    if (currentValue.indexOf(BSL3_TEXT) !== -1) return
+    if (currentValue) {
+      textarea.value = BSL3_TEXT + ' ' + textarea.value
+    } else {
+      textarea.value = BSL3_TEXT
+    }
+  })
+  section.insertBefore(p, textarea)
 }
