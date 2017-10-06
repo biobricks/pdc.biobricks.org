@@ -424,7 +424,14 @@ function template (configuration, data) {
             to protect themselves, other people, and the environment.
           </p>
 
-          <textarea name=safety rows=10 spellcheck></textarea>
+          <aside class=legal>
+            If your finding implicates Biosafety Level 4, please
+            seriously reconsider sharing your finding via PDC.
+            PDC publications are published instantly, distributed
+            globally, and free to redistribute.
+          </aside>
+
+          <textarea name=safety rows=5 spellcheck></textarea>
         </section>
 
         <section id=attachments class=optional>
