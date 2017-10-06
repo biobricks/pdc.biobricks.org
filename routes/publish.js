@@ -494,6 +494,17 @@ function template (configuration, data) {
                         .join(', ') +
                       ')'
                     )}
+                    ${
+                      category.term === 'composition of matter' &&
+                      '(<em>most common</em>)'
+                    }
+                    ${
+                      (
+                        category.term === 'manufacture' ||
+                        category.term === 'machine'
+                      ) &&
+                      '(<em>uncommon</em>)'
+                    }
                     &mdash;
                     ${escape(category.definition)}
                   </label>
