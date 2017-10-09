@@ -479,7 +479,7 @@ function template (configuration, data) {
           <p>
             Please e-mail
             <a
-                href=mailto:kyle@kemitchell.com
+                href=mailto:kyle@publicdomainchronicle.org
                 target=_blank
               >Kyle Mitchell</a>
             if you have many sequences to contribute in bulk.
