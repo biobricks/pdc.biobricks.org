@@ -422,7 +422,7 @@ function template (configuration, data) {
             Describe what you&rsquo;ve found. Feel free to put it just
             as you would to a colleague in your field, to make clear to
             them what&rsquo;s new, and how it&rsquo;s useful.
-            Feel free to use multiple paragraphs if necessary.
+            Use multiple paragraphs if necessary.
           </p>
 
           <aside class=legal>
