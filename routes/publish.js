@@ -16,7 +16,6 @@ limitations under the License.
 
 var Busboy = require('busboy')
 var FormData = require('form-data')
-var NETWORK = require('pdc-network')
 var concat = require('concat-stream')
 var displayParagraphs = require('./display-paragraphs')
 var escape = require('./escape')
@@ -302,47 +301,6 @@ function template (configuration, data) {
             target=_blank
           >Public Domain Chronicle</a>.
       </p>
-
-      <p>
-        This is a generic form for contributions in all fields of science.
-        If the specific field of your contribution appears below,
-        use the linked form instead.
-        That form will be faster and easier for you to fill out.
-      </p>
-
-      <table>
-        <thead>
-          <th>Fields</th>
-          <th>Form</th>
-          <th>Host</th>
-        </thead>
-        <tbody>
-          ${NETWORK
-    .filter(function (member) {
-      return member.server.fields
-    })
-    .map(function (member) {
-      return html`
-                  <tr>
-                    <td>${member.server.fields.map(escape).join(' ')}</td>
-                    <td>
-                      <a
-                          href="${escape(member.server.publish)}"
-                          target=_blank
-                        >${escape(member.server.publish.replace(/^https?:\/\//, ''))}</a>
-                    </td>
-                    <td>
-                      <a
-                          href="${escape(member.host.website)}"
-                          target=_blank
-                        >${escape(member.host.name)}</a>
-                    </td>
-                  </tr>
-                `
-    })
-}
-        </tbody>
-      </table>
 
       <aside class=legal>
         Do not break the law, any institutional policy, or any contract
