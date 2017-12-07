@@ -50,7 +50,9 @@ var REPLICATION_INTERVAL = ENV.REPLICATION_INTERVAL
 
 var SOLICIT_FEEDBACK = !!ENV.SOLICIT_FEEDBACK
 
-var log = pino({ name: NAME + '@' + VERSION })
+var TENKGENES_SECRET = ENV.TENKGENES_SECRET
+
+var log = pino({name: NAME + '@' + VERSION})
 
 initialize(DIRECTORY, function (error, keypair) {
   if (error) {
@@ -73,7 +75,10 @@ initialize(DIRECTORY, function (error, keypair) {
           password: STAMPERY_PASSWORD
         }
         : false,
-      feedback: SOLICIT_FEEDBACK
+      feedback: SOLICIT_FEEDBACK,
+      tenkgenes: {
+        secret: TENKGENES_SECRET
+      }
     }
     var requestHandler = makeHandler(configuration, log)
     var server = http.createServer(requestHandler)
