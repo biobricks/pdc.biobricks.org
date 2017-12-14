@@ -171,10 +171,9 @@ module.exports = function (configuration, errors, values) {
           <textarea
               name=finding
               rows=15
-              value="${value('description')}"
               maxlength=28000
               spellcheck
-              required></textarea>
+              required>${value('description')}</textarea>
         </section>
 
         <section id=safety class=optional>

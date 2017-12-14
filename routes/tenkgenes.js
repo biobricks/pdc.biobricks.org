@@ -60,11 +60,14 @@ function post (request, response, configuration) {
               values.description
             )
           }
-          publishForm(configuration, false, {
-            name: values.first + ' ' + values.last,
-            description: values.description,
-            sequences: values.sequences
-          })
+          response.setHeader('Content-Type', 'text/html; charset=UTF-8')
+          response.end(
+            publishForm(configuration, false, {
+              name: values.first + ' ' + values.last,
+              description: values.description,
+              sequences: values.sequences
+            })
+          )
         }
       })
   )

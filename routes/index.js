@@ -24,6 +24,7 @@ serveAllFiles(routes, 'png')
 serveAllFiles(routes, 'css')
 
 routes.set('/publish', require('./publish'))
+routes.set('/tenkgenes', require('./tenkgenes'))
 routes.set('/publish.js', serveFile('publish.js'))
 
 routes.set('/key', require('./key'))
