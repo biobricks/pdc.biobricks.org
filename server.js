@@ -52,7 +52,7 @@ var SOLICIT_FEEDBACK = !!ENV.SOLICIT_FEEDBACK
 
 var TENKGENES_SECRET = ENV.TENKGENES_SECRET || 'not_a_secret'
 
-var log = pino({name: NAME + '@' + VERSION})
+var log = pino({ name: NAME + '@' + VERSION })
 
 initialize(DIRECTORY, function (error, keypair) {
   if (error) {

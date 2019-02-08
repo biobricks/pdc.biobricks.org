@@ -41,7 +41,7 @@ module.exports = function (callback) {
         },
         stampery: false,
         feedback: true,
-        tenkgenes: {secret: 'secret'}
+        tenkgenes: { secret: 'secret' }
       }
       var log = pino({}, devNull())
       var server = http.createServer(makeHandler(configuration, log))

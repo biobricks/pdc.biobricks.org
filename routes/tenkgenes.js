@@ -30,7 +30,7 @@ function post (request, response, configuration) {
   var parser
   /* istanbul ignore next */
   try {
-    parser = new Busboy({headers: request.headers})
+    parser = new Busboy({ headers: request.headers })
   } catch (error) {
     response.statusCode = 400
     response.end()

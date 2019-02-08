@@ -247,7 +247,7 @@ module.exports = function (configuration, errors, values) {
 
             <ul class=shortListOfCheckBoxes>
               ${CATEGORIES.map(function (category) {
-                return html`
+    return html`
                 <li>
                   <label>
                     <input
@@ -256,31 +256,31 @@ module.exports = function (configuration, errors, values) {
                         value="${escape(category.term)}">
                     ${escape(category.term)}
                     ${category.aka && (
-                      '(or ' +
+    '(or ' +
                       category.aka
                         .map(function (term) {
                           return escape('"' + term + '"')
                         })
                         .join(', ') +
                       ')'
-                    )}
+  )}
                     ${
-                      category.term === 'composition of matter' &&
+  category.term === 'composition of matter' &&
                       '(<em>most common</em>)'
-                    }
+}
                     ${
-                      (
-                        category.term === 'manufacture' ||
+  (
+    category.term === 'manufacture' ||
                         category.term === 'machine'
-                      ) &&
+  ) &&
                       '(<em>uncommon</em>)'
-                    }
+}
                     &mdash;
                     ${escape(category.definition)}
                   </label>
                 </li>
                 `
-              })}
+  })}
             </ul>
           </section>
 
@@ -294,7 +294,7 @@ module.exports = function (configuration, errors, values) {
 
             <ul class=listOfCheckBoxes>
               ${SUBJECTS.map(function (subject) {
-                return html`
+    return html`
                 <li>
                   <label>
                     <input
@@ -305,7 +305,7 @@ module.exports = function (configuration, errors, values) {
                   </label>
                 </li>
                 `
-              })}
+  })}
             </ul>
           </section>
 
@@ -322,7 +322,7 @@ module.exports = function (configuration, errors, values) {
 
             <ul class=listOfCheckBoxes>
               ${JOURNALS.map(function (journal) {
-                return html`
+    return html`
                 <li>
                   <label>
                     <input
@@ -334,7 +334,7 @@ module.exports = function (configuration, errors, values) {
                   </label>
                 </li>
                 `
-              })}
+  })}
             </ul>
           </section>
 
